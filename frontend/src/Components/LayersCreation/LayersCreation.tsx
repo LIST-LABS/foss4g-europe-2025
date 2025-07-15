@@ -1,0 +1,28 @@
+import React from "react";
+import { LAYERS_DEFINITIONS } from "../Layers/layersDefinitions";
+import VectorTilesCreation from "./VectorTilesCreation";
+import { useLayerContext } from "../Layers/context/LayerContext";
+import useMap from "../MapInitialization/context/useMap";
+
+const LayersCreation = () => {
+    const { layers } = useLayerContext();
+
+    return (
+        <>
+            {Object.entries(layers).map(([key, placeholder]) => {
+                if (placeholder.active && LAYERS_DEFINITIONS[key]) {
+                    const layer = LAYERS_DEFINITIONS[key];
+                    return (
+                        <VectorTilesCreation
+                            key={key}
+                            layer={layer}
+                        />
+                    );
+                }
+                return null;
+            })}
+        </>
+    );
+};
+
+export default LayersCreation;

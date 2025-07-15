@@ -120,6 +120,16 @@ export default defineConfig([
 
             "@typescript-eslint/no-explicit-any": "warn",
             "react/react-in-jsx-scope": "off",
+
+            "@typescript-eslint/no-restricted-imports": [
+                "error",
+                {
+                    name: "react-redux",
+                    importNames: ["useSelector", "useDispatch"],
+                    message:
+                        "Use typed hooks `useAppDispatch` and `useAppSelector` instead.",
+                },
+            ],
         },
     },
 ]);

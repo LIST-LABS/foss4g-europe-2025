@@ -14,5 +14,4 @@ export default defineConfig({
     server: {
         port: 3000,
     },
-    envDir: process.env.NODE_ENV !== "development" ? "/etc/secrets/cm-dev/frontend/" : "./",
 });
