@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useEffect } from "react";
 import { Feature } from "ol";
 import { Coordinate } from "ol/coordinate";
 
@@ -8,21 +8,10 @@ interface PopupProps {
     onClose: () => void;
 }
 
-const Popup: React.FC<PopupProps> = React.memo(({ feature, coordinate, onClose }) => {
+const Popup = ({ feature, coordinate, onClose }: PopupProps) => {
     const layer = useMemo(() => feature.get("layer"), [feature]);
     const highway = useMemo(() => feature.get("highway"), [feature]);
     const building = useMemo(() => feature.get("building"), [feature]);
-
-    const handleClose = useCallback((event: React.MouseEvent) => {
-        // Stop the event from bubbling up to the map
-        event.stopPropagation();
-        onClose();
-    }, [onClose]);
-
-    // Optional: Also stop propagation for the entire popup content
-    const handlePopupClick = useCallback((event: React.MouseEvent) => {
-        event.stopPropagation();
-    }, []);
 
     const renderRoadProperties = () => {
         return (
@@ -61,24 +50,34 @@ const Popup: React.FC<PopupProps> = React.memo(({ feature, coordinate, onClose }
     };
 
     return (
-        <div 
+        <div
             className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center"
-            onClick={handleClose} // This handles clicks outside the inner popup content to close it
+            onClick={onClose}
         >
-            <div 
-                className="mx-4 w-full max-w-md rounded-lg bg-white shadow-xl"
-                onClick={handlePopupClick} // Prevent clicks *inside* the popup from bubbling to the outer overlay and closing it
+            <div
+                className="mx-4 w-full max-w-md cursor-default rounded-lg bg-white shadow-xl"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                }}
             >
-                {/* Header */}
                 <div className="flex items-center justify-between border-b p-4">
                     <h2 className="text-xl font-bold text-gray-900">
                         {layer === "roads" ? "Road Details" : "Building Details"}
                     </h2>
                     <button
-                        onClick={handleClose} // This will now stop propagation
-                        className="text-2xl font-bold text-gray-400 hover:text-gray-600"
+                        onClick={onClose}
+                        className="cursor-pointer text-2xl font-bold text-gray-400 hover:text-gray-600"
                     >
-                        ×
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            fill="#000000"
+                            viewBox="0 0 256 256"
+                        >
+                            <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path>
+                        </svg>
                     </button>
                 </div>
 
@@ -94,8 +93,6 @@ const Popup: React.FC<PopupProps> = React.memo(({ feature, coordinate, onClose }
             </div>
         </div>
     );
-});
-
-Popup.displayName = "Popup";
+};
 
 export default Popup;
