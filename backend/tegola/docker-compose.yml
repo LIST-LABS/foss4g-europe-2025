@@ -1,0 +1,17 @@
+services:
+  tegola:
+    image: gospatial/tegola:latest
+    container_name: workshop_tegola
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./config.toml:/config.toml
+    environment:
+      - TEGOLA_CONFIG=/config.toml
+    networks:
+      - backend
+    command: serve --config /config.toml
+
+networks:
+  backend:
+    external: true
