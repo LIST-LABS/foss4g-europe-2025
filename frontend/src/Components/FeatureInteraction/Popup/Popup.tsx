@@ -9,7 +9,6 @@ interface PopupProps {
 }
 
 const Popup = ({ feature, coordinate, onClose }: PopupProps) => {
-    console.log(feature);
     const layer = useMemo(() => feature.get("layer"), [feature]);
     const highway = useMemo(() => feature.get("highway"), [feature]);
     const building = useMemo(() => feature.get("building"), [feature]);
