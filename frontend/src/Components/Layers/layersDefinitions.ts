@@ -1,16 +1,17 @@
 import { StyleLike } from "ol/style/Style";
+import styleExample from "../MapboxStlye/styleExample.json";
 
 export type TMapboxStyleLayer = {
-  version: number;
-  sources: Record<string, { type: "vector" } & Record<string, string>>;
-  layers: {
-      id: string;
-      layout: Record<string, any>;
-      paint: Record<string, any>;
-      source: string;
-      "source-layer": string;
-      type: "fill" | "symbol";
-  }[];
+    version: number;
+    sources: Record<string, { type: "vector" } & Record<string, string>>;
+    layers: {
+        id: string;
+        layout: Record<string, any>;
+        paint: Record<string, any>;
+        source: string;
+        "source-layer": string;
+        type: "fill" | "symbol";
+    }[];
 };
 
 export type TLayer = {
@@ -45,14 +46,14 @@ export const LAYERS_DEFINITIONS: Record<string, TLayer> = {
         zIndex: 10,
         opacity: 1,
         layerInfo: {
-            url: `https://foss4g-2025.listlabs.net/maps/osm/roads/{z}/{x}/{y}.pbf`,
+            url: `http://localhost:8080/maps/osm/roads/{z}/{x}/{y}.pbf`,
             declutter: true,
             format: "MVT",
             featureClass: "Feature",
-            layer_name: "detections",
+            layer_name: "roads",
         },
     },
-    buildings: {
+    /* buildings: {
         id: "buildings",
         label: "Buildings",
         type: "VT",
@@ -61,11 +62,11 @@ export const LAYERS_DEFINITIONS: Record<string, TLayer> = {
         zIndex: 20,
         opacity: 1,
         layerInfo: {
-            url: `https://foss4g-2025.listlabs.net/maps/osm/buildings/{z}/{x}/{y}.pbf`,
+            url: `http://localhost:8080/maps/osm/{z}/{x}/{y}.pbf`,
             declutter: true,
             format: "MVT",
             featureClass: "Feature",
             layer_name: "buildings",
         },
-    },
+    }, */
 };

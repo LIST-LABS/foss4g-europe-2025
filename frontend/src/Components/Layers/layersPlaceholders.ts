@@ -2,6 +2,10 @@ export type TLayerPlaceholder = {
     id: string;
     name: string;
     active: boolean;
+    label: string;
+    type: string;
+    displayed: boolean;
+    visible: boolean;
 };
 
 export const LAYERS_PLACEHOLDERS: Record<string, TLayerPlaceholder> = {
@@ -9,10 +13,9 @@ export const LAYERS_PLACEHOLDERS: Record<string, TLayerPlaceholder> = {
         id: "roads",
         name: "Roads",
         active: false,
-    },
-    buildings: {
-        id: "buildings",
-        name: "Buildings",
-        active: false,
+        label: "Roads",
+        type: "vector",
+        displayed: true,
+        visible: true,
     },
 };

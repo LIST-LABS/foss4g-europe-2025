@@ -11,7 +11,9 @@ import { layerStyles, TLayerStyles } from "../Layers/layersStyles";
 
 import useMap from "../MapInitialization/context/useMap";
 import { TLayer } from "../Layers/layersDefinitions";
-import { StyleLike } from "ol/style/Style";
+import Style, { StyleLike } from "ol/style/Style";
+import { Fill, Stroke } from "ol/style";
+import { applyStyle } from "ol-mapbox-style";
 
 interface VectorTilesCreationProps {
     layer: TLayer;
@@ -31,6 +33,16 @@ const getLayerStyle = (layer: TLayer) => {
 
     return undefined;
 };
+
+const undefinedStyle = new Style({
+    fill: new Fill({
+        color: "orange",
+    }),
+    stroke: new Stroke({
+        color: "gray",
+        width: 1,
+    }),
+});
 
 const VectorTilesCreation = ({ layer }: VectorTilesCreationProps) => {
     const { map } = useMap();
@@ -56,8 +68,19 @@ const VectorTilesCreation = ({ layer }: VectorTilesCreationProps) => {
                 type: layer.type,
             },
             visible: layer.visible,
-            style: layerStyle as StyleLike,
+            style:
+                typeof layerStyle === "function"
+                    ? (feature, _arg2) => layerStyle(feature, _arg2)
+                    : layerStyle instanceof Style
+                      ? layerStyle
+                      : undefinedStyle,
         });
+
+        if (typeof layerStyle === "object" && !(layerStyle instanceof Style)) {
+            applyStyle(vectorTileLayer, JSON.stringify(layerStyle), {
+                updateSource: false,
+            });
+        }
 
         map.addLayer(vectorTileLayer);
 
