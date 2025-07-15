@@ -12,4 +12,13 @@ export const LAYERS_PLACEHOLDERS: Record<string, TLayerPlaceholder> = {
         displayed: true,
         visible: true,
     },
+    buildings: {
+        id: "buildings",
+        name: "Buildings",
+        active: false,
+        label: "Buildings",
+        type: "vector",
+        displayed: true,
+        visible: true,
+    },
 };

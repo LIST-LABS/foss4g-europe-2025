@@ -21,7 +21,7 @@ export const LAYERS_DEFINITIONS: Record<string, TLayer> = {
             layer_name: "roads",
         },
     },
-    /* buildings: {
+    buildings: {
         id: "buildings",
         label: "Buildings",
         type: "VT",
@@ -30,11 +30,11 @@ export const LAYERS_DEFINITIONS: Record<string, TLayer> = {
         zIndex: 20,
         opacity: 1,
         layerInfo: {
-            url: `http://localhost:8080/maps/osm/{z}/{x}/{y}.pbf`,
+            url: `https://foss4g-2025.listlabs.net/maps/osm/buildings/{z}/{x}/{y}.pbf`,
             declutter: true,
             format: "MVT",
             featureClass: "Feature",
             layer_name: "buildings",
         },
-    }, */
+    },
 };
