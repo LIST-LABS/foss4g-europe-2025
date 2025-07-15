@@ -1,4 +1,4 @@
-/* import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { unByKey } from "ol/Observable";
 import { Feature, MapBrowserEvent } from "ol";
 import { Coordinate } from "ol/coordinate";
@@ -52,4 +52,3 @@ const MapClickInteraction = () => {
 };
 
 export default MapClickInteraction;
- */

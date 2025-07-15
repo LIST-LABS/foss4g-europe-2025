@@ -1,4 +1,4 @@
-/* import React, { useState } from "react";
+import React, { useState } from "react";
 import { useLayerContext } from "../context/LayerContext";
 
 const LayerToggle = () => {
@@ -12,7 +12,7 @@ const LayerToggle = () => {
                     isExpanded ? "w-64" : "w-12"
                 }`}
             >
-
+                {/* Header/Toggle Button */}
                 <div
                     className="flex cursor-pointer items-center justify-between p-3"
                     onClick={() => setIsExpanded(!isExpanded)}
@@ -43,7 +43,7 @@ const LayerToggle = () => {
                     </button>
                 </div>
 
-
+                {/* Layer List */}
                 {isExpanded && (
                     <div className="space-y-2 p-3">
                         {Object.entries(layers).map(([key, layer]) => (
@@ -68,4 +68,3 @@ const LayerToggle = () => {
 };
 
 export default LayerToggle;
- */
