@@ -1,4 +1,4 @@
-// React
+/* // React
 import { useEffect, useState } from "react";
 
 // External libs
@@ -68,3 +68,4 @@ const MapHoverInteraction = () => {
 };
 
 export default MapHoverInteraction;
+ */

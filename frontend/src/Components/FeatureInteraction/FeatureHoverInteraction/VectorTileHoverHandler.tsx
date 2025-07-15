@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+/* import { useEffect, useRef } from "react";
 import { Feature } from "ol";
 import VectorTileSource from "ol/source/VectorTile";
 import VectorTileLayer from "ol/layer/VectorTile";
@@ -71,3 +71,4 @@ const VectorTileHoverHandler = ({ vtFeature, vtLayer }: VectorTileHoverHandlerPr
 };
 
 export default VectorTileHoverHandler;
+ */
