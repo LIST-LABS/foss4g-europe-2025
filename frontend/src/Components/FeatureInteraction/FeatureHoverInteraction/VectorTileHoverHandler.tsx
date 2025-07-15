@@ -5,11 +5,7 @@ import VectorTileLayer from "ol/layer/VectorTile";
 import { Geometry } from "ol/geom";
 import useMap from "../../MapInitialization/context/useMap";
 import { Stroke, Style } from "ol/style";
-
-type Props = {
-    vtFeature: Feature<Geometry> | null;
-    vtLayer: VectorTileLayer | null;
-};
+import { VectorTileHoverHandlerProps } from "../../../types";
 
 const hoveredFeatureStyle = (): Style => {
     return new Style({
@@ -20,7 +16,7 @@ const hoveredFeatureStyle = (): Style => {
     });
 };
 
-const VectorTileHoverHandler = ({ vtFeature, vtLayer }: Props) => {
+const VectorTileHoverHandler = ({ vtFeature, vtLayer }: VectorTileHoverHandlerProps) => {
     const { map } = useMap();
     const hoverLayerRef = useRef<VectorTileLayer | null>(null);
     const hoveredFeatureId = vtFeature?.getId();

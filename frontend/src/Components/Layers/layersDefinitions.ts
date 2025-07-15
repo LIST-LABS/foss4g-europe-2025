@@ -1,40 +1,8 @@
 import { StyleLike } from "ol/style/Style";
 import styleExample from "../MapboxStlye/styleExample.json";
+import { TMapboxStyleLayer, TLayer, TLayerInfo } from "../../types";
 
-export type TMapboxStyleLayer = {
-    version: number;
-    sources: Record<string, { type: "vector" } & Record<string, string>>;
-    layers: {
-        id: string;
-        layout: Record<string, any>;
-        paint: Record<string, any>;
-        source: string;
-        "source-layer": string;
-        type: "fill" | "symbol";
-    }[];
-};
-
-export type TLayer = {
-    id: string;
-    label: string;
-    type: string;
-    displayed: boolean;
-    visible: boolean;
-    minZoom?: number;
-    maxZoom?: number;
-    opacity?: number;
-    zIndex?: number;
-    layerInfo: TLayerInfo;
-    style?: StyleLike | TMapboxStyleLayer;
-};
-
-export type TLayerInfo = {
-    url: string;
-    format: "MVT";
-    featureClass: "Feature" | "RenderedFeature";
-    declutter: boolean;
-    layer_name: string;
-};
+export type { TMapboxStyleLayer, TLayer, TLayerInfo };
 
 export const LAYERS_DEFINITIONS: Record<string, TLayer> = {
     roads: {
@@ -46,7 +14,7 @@ export const LAYERS_DEFINITIONS: Record<string, TLayer> = {
         zIndex: 10,
         opacity: 1,
         layerInfo: {
-            url: `http://localhost:8080/maps/osm/roads/{z}/{x}/{y}.pbf`,
+            url: `https://foss4g-2025.listlabs.net/maps/osm/roads/{z}/{x}/{y}.pbf`,
             declutter: true,
             format: "MVT",
             featureClass: "Feature",

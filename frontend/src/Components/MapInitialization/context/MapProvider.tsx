@@ -1,11 +1,8 @@
 import { createContext, ReactNode, useState } from "react";
-
 import { Map } from "ol";
+import { MapContextData } from "../../../types";
 
-export interface MapContextData {
-    map: Map | null;
-    setMap: React.Dispatch<React.SetStateAction<Map | null>> | null;
-}
+export type { MapContextData };
 
 export const MapContextDefaultValue: MapContextData = {
     map: null,

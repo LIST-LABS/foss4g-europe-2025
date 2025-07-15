@@ -4,8 +4,9 @@ import { Feature, MapBrowserEvent } from "ol";
 import { Coordinate } from "ol/coordinate";
 import useMap from "../../MapInitialization/context/useMap";
 import Popup from "../Popup/Popup";
+import { PopupDataValueType } from "../../../types";
 
-export type PopupDataValueType = string | number | boolean;
+export type { PopupDataValueType };
 
 const MapClickInteraction = () => {
     const { map } = useMap();
@@ -27,7 +28,7 @@ const MapClickInteraction = () => {
         if (!map) return;
         e.stopPropagation();
         e.preventDefault();
-        
+
         const coordinate = e.coordinate;
 
         const clickedFeature = map.forEachFeatureAtPixel(e.pixel, (feature, layer) => {
