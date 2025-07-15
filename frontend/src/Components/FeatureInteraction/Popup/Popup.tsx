@@ -1,12 +1,5 @@
 import React, { useCallback, useMemo, useEffect } from "react";
-import { Feature } from "ol";
-import { Coordinate } from "ol/coordinate";
-
-interface PopupProps {
-    feature: Feature;
-    coordinate: Coordinate;
-    onClose: () => void;
-}
+import { PopupProps } from "../../../types";
 
 const Popup = ({ feature, coordinate, onClose }: PopupProps) => {
     const layer = useMemo(() => feature.get("layer"), [feature]);

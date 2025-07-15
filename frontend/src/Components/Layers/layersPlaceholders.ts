@@ -1,12 +1,6 @@
-export type TLayerPlaceholder = {
-    id: string;
-    name: string;
-    active: boolean;
-    label: string;
-    type: string;
-    displayed: boolean;
-    visible: boolean;
-};
+import { TLayerPlaceholder } from "../../types";
+
+export type { TLayerPlaceholder };
 
 export const LAYERS_PLACEHOLDERS: Record<string, TLayerPlaceholder> = {
     roads: {

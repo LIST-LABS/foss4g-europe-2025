@@ -1,12 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { LAYERS_PLACEHOLDERS } from "../layersPlaceholders";
-import { TLayerPlaceholder } from "../layersPlaceholders";
-
-interface LayerContextType {
-    layers: Record<string, TLayerPlaceholder>;
-    setLayers: (layers: Record<string, TLayerPlaceholder>) => void;
-    toggleLayer: (layerId: string) => void;
-}
+import { LayerContextType, LayerProviderProps } from "../../../types";
 
 const LayerContext = createContext<LayerContextType | undefined>(undefined);
 
@@ -18,10 +12,6 @@ export const useLayerContext = (): LayerContextType => {
     }
     return context;
 };
-
-interface LayerProviderProps {
-    children: ReactNode;
-}
 
 // LayerProvider is a context provider that provides the layer context to the children components (App.tsx)
 export const LayerProvider = ({ children }: LayerProviderProps) => {

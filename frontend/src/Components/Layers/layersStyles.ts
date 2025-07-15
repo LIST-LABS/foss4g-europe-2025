@@ -1,10 +1,9 @@
 import Style, { StyleLike } from "ol/style/Style";
 import { Fill, Stroke } from "ol/style";
 import { LAYERS_DEFINITIONS } from "./layersDefinitions";
+import { TLayerKeys, TLayerStyles } from "../../types";
 
-type TLayerKeys = keyof typeof LAYERS_DEFINITIONS;
-
-export type TLayerStyles = Record<TLayerKeys, StyleLike | undefined>;
+export type { TLayerKeys, TLayerStyles };
 
 export const layerStyles: TLayerStyles = {
     roads: new Style({

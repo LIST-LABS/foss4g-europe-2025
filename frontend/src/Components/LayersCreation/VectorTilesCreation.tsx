@@ -14,10 +14,7 @@ import { TLayer } from "../Layers/layersDefinitions";
 import Style, { StyleLike } from "ol/style/Style";
 import { Fill, Stroke } from "ol/style";
 import { applyStyle } from "ol-mapbox-style";
-
-interface VectorTilesCreationProps {
-    layer: TLayer;
-}
+import { VectorTilesCreationProps } from "../../types";
 
 const getLayerStyle = (layer: TLayer) => {
     if (layer.style) {
