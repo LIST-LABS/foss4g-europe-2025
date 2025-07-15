@@ -89,6 +89,26 @@ _This command builds and starts the frontend web application in a Docker contain
 
 _This is the main workshop map app. You should see an interactive map with both base and vector tile layers._
 
+## 8. Running the Flask Backend Server (for Layer API)
+
+To build and run the Flask server that provides the layer API:
+
+1. Open a terminal and navigate to the backend server directory:
+   ```bash
+   cd backend/server
+   ```
+2. Build the Docker image:
+   ```bash
+   docker build -t flask-server .
+   ```
+3. Run the Flask server container:
+   ```bash
+   docker run -p 5000:5000 flask-server
+   ```
+   This will start the server on port 5000. The API will be available at `http://localhost:5000/layer/buildings`.
+
+You can now fetch layer definitions from your frontend using this endpoint.
+
 ---
 
 ## Troubleshooting
